@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stem Resultaten</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: 0 auto; }
+        h1 { text-align: center; }
+        .party, .kandidaten { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+        .party { background-color: #f9f9f9; }
+        .kandidaten { background-color: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stem Resultaten</h1>
+        
+        <div class="party">
+            <h2>Stemmen per partij:</h2>
+            <ul>
+                {% for partij, aantal in partij_stemmen.items() %}
+                <li>{{ partij }}: {{ aantal }} stemmen</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="kandidaten">
+            <h2>Stemmen per vertegenwoordiger:</h2>
+            {% for partij, reps in kandidaat_stemmen.items() %}
+            <div>
+                <h3>{{ partij }}:</h3>
+                <ul>
+                    {% for rep, aantal in reps.items() %}
+                    <li>{{ rep }}: {{ aantal }} stemmen</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
